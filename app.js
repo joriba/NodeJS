@@ -31,7 +31,7 @@ app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
 app.use('/tips', tipsRouter);
 app.use('/recipes', recipesRouter);
-app.use('advice', adviceRouter);
+app.use('/advice', adviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
