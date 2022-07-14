@@ -4,9 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//create route objects
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var aboutRouter = require('./routes/about');
+var contactRouter = require('./routes/contact');
+var tipsRouter = require('./routes/tips');
+var recipesRouter = require('./routes/recipes');
+var adviceRouter = require('./routes/advice');
 
+//the app object
 var app = express();
 
 // view engine setup
@@ -19,8 +25,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//tell the app to use these routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/about', aboutRouter);
+app.use('/contact', contactRouter);
+app.use('/tips', tipsRouter);
+app.use('/recipes', recipesRouter);
+app.use('advice', adviceRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -38,4 +49,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+//expose this app to the scripts that require it, i.e. ./bin/www
 module.exports = app;
